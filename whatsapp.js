@@ -410,11 +410,13 @@ app.post("/send", async (req, res) => {
             });
         } catch (error) {
             console.log(error);
-            vRetorno.push({
-                cod: 1,
-                msg: error.stack,
-                id: vDadosArray[i].id?.id,
-            });
+            try {
+                vRetorno.push({
+                    cod: 1,
+                    msg: error.stack,
+                    id: vDadosArray[i].id?.id,
+                });
+            } catch (error1) {}
         }
     }
 
